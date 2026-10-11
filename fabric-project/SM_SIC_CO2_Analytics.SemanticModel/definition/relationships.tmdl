@@ -1,0 +1,8 @@
+relationship ce8742ff-ca17-8768-b99d-96533522ac38
+	fromColumn: factcountryyear.country_code
+	toColumn: dimcountry.country_code
+
+relationship 6b25fc76-d89d-1449-f284-2668b5bf8058
+	fromColumn: factcountryyear.year_key
+	toColumn: dimyear.year_key
+

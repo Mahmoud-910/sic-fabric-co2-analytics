@@ -1,0 +1,195 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.1.0/schema.json",
+  "name": "2812059a6b514bd168be",
+  "displayName": "Page 1",
+  "displayOption": "FitToPage",
+  "height": 1080,
+  "width": 1920,
+  "autoPageGenerationConfig": {
+    "selectedFields": [
+      {
+        "Column": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "dimyear"
+            }
+          },
+          "Property": "year"
+        }
+      },
+      {
+        "Measure": {
+          "Expression": {
+            "SourceRef": {
+              "Entity": "factcountryyear"
+            }
+          },
+          "Property": "CO2 Tonnes"
+        }
+      }
+    ],
+    "visualContainerConfigurations": [
+      {
+        "name": "87b6d2051d400b28663e",
+        "fields": [
+          {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "CO2 Tonnes"
+            }
+          }
+        ]
+      },
+      {
+        "name": "0ec35cc68b8ddc5a4684",
+        "fields": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "dimyear"
+                }
+              },
+              "Property": "year"
+            }
+          },
+          {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "CO2 Tonnes"
+            }
+          }
+        ]
+      },
+      {
+        "name": "0751cb58ea9540b60f89",
+        "fields": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "country_code"
+            }
+          },
+          {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "CO2 Tonnes"
+            }
+          }
+        ]
+      },
+      {
+        "name": "ddf8de9b8f60c238548e",
+        "fields": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "year_key"
+            }
+          },
+          {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "CO2 Tonnes"
+            }
+          }
+        ]
+      },
+      {
+        "name": "6ba06909c5120bc9730a",
+        "fields": [
+          {
+            "Column": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "dimcountry"
+                }
+              },
+              "Property": "region"
+            }
+          },
+          {
+            "Measure": {
+              "Expression": {
+                "SourceRef": {
+                  "Entity": "factcountryyear"
+                }
+              },
+              "Property": "CO2 Tonnes"
+            }
+          }
+        ]
+      },
+      {
+        "name": "b0d4f3d2a74aac9535fa",
+        "fields": []
+      },
+      {
+        "name": "6f556a90d3cc31bb90a4",
+        "fields": []
+      },
+      {
+        "name": "29074fe54256daec6538",
+        "fields": []
+      },
+      {
+        "name": "19a1436fb388ec944b59",
+        "fields": []
+      },
+      {
+        "name": "bf460cc7b3e3a5398734",
+        "fields": []
+      },
+      {
+        "name": "1e6a5ccf912ef308bcc1",
+        "fields": []
+      },
+      {
+        "name": "47ce8f19754ee3bed0f1",
+        "fields": []
+      },
+      {
+        "name": "601920e18dff0d2061da",
+        "fields": []
+      },
+      {
+        "name": "9e387107e9715ebd6478",
+        "fields": []
+      },
+      {
+        "name": "e43b516701d86c7ab1f8",
+        "fields": []
+      }
+    ],
+    "layout": {
+      "related": {
+        "version": 1,
+        "dataTableName": "1e6a5ccf912ef308bcc1"
+      }
+    }
+  }
+}

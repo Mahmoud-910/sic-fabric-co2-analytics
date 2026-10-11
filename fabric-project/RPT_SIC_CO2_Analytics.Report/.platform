@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "RPT_SIC_CO2_Analytics"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "360e45c3-4cd3-b789-46cc-4e2aede5a7c7"
+  }
+}

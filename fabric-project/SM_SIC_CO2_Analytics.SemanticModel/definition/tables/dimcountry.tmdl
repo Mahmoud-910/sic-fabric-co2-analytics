@@ -1,0 +1,47 @@
+table dimcountry
+	lineageTag: 394a774b-bfd3-48fc-b990-5984bacbbfe7
+	sourceLineageTag: [dbo].[dimcountry]
+
+	column country_code
+		dataType: string
+		lineageTag: ac691b93-96b6-4cc1-8ac8-a80b21100b85
+		sourceLineageTag: country_code
+		summarizeBy: none
+		sourceColumn: country_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column country_name
+		dataType: string
+		lineageTag: 124bce0d-f638-48ab-8d8d-4be3c16b2d2a
+		sourceLineageTag: country_name
+		summarizeBy: none
+		sourceColumn: country_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: f35bc00c-45d2-4dc3-bb8e-5cdf28654106
+		sourceLineageTag: region
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column income_level
+		dataType: string
+		lineageTag: 34e5cfab-a1cc-412e-ab09-73ef61a819b0
+		sourceLineageTag: income_level
+		summarizeBy: none
+		sourceColumn: income_level
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimcountry = entity
+		mode: directLake
+		source
+			entityName: dimcountry
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_SIC_CO2_Analytics'
+

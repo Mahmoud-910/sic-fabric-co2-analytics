@@ -1,0 +1,9 @@
+expression 'DirectLake - LH_SIC_CO2_Analytics' =
+		let
+		    Source = AzureStorage.DataLake("https://onelake.dfs.fabric.microsoft.com/244f22c4-f0e7-479e-9216-c3dc5c71ecc6/78257206-cd5f-4fe5-b3c7-4bb76eee41e8", [HierarchicalNavigation=true])
+		in
+		    Source
+	lineageTag: dc2d486d-e23b-4593-ab57-626aa5109175
+
+	annotation PBI_IncludeFutureArtifacts = False
+

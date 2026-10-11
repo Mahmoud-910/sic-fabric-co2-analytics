@@ -1,0 +1,41 @@
+table dimyear
+	lineageTag: 28ea6561-73f6-4b22-b41c-3c8754672131
+	sourceLineageTag: [dbo].[dimyear]
+
+	column year_key
+		dataType: int64
+		formatString: 0
+		lineageTag: f897dc82-28da-4d09-aab5-a2ac4d74a79c
+		sourceLineageTag: year_key
+		summarizeBy: none
+		sourceColumn: year_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 18d43241-4175-4828-b701-83ddde461053
+		sourceLineageTag: year
+		summarizeBy: none
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column decade
+		dataType: int64
+		formatString: 0
+		lineageTag: 5f8d6e59-04a2-4feb-8e2f-cabf75fc0edb
+		sourceLineageTag: decade
+		summarizeBy: none
+		sourceColumn: decade
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dimyear = entity
+		mode: directLake
+		source
+			entityName: dimyear
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_SIC_CO2_Analytics'
+

@@ -1,0 +1,205 @@
+table factcountryyear
+	lineageTag: 2a9e7f52-6809-4e74-9286-4b6886b4cf64
+	sourceLineageTag: [dbo].[factcountryyear]
+
+	measure 'CO2 Tonnes' = ```
+			SUM(factcountryyear[co2_tonnes])
+			
+			```
+		lineageTag: 4d3accb9-ecfd-4bd8-8e21-171b87f8402e
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Measure
+		lineageTag: 3d4fb764-55eb-4e5d-b737-aec836be9709
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Measure 2'
+		lineageTag: 65ed1286-3c48-4989-964b-71b2d571f973
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'Total Population' = ```
+			SUM(factcountryyear[population])
+			
+			```
+		lineageTag: 6d8c3fbe-1153-4c58-a3e4-fb13b91cf7ff
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CO2 Tonnes per Person' = ```
+			DIVIDE([CO2 Tonnes], [Total Population])
+			
+			```
+		lineageTag: 499f07e8-4cd5-4be1-bb73-a0ab76f4251c
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Total GDP Current USD' = ```
+			SUM(factcountryyear[gdp_current_usd])
+			
+			```
+		lineageTag: 89aa014a-a014-4334-8b7f-613453df8d61
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Latest Data Year' = ```
+			MAXX(ALL(dimyear), dimyear[year_key])
+			
+			```
+		formatString: 0
+		lineageTag: b0945dd5-604f-4fb2-a484-322680627407
+
+		changedProperty = Name
+
+	measure 'Measure 3'
+		lineageTag: de5d4778-630d-4441-8be3-30ac7cfda147
+
+		annotation 43dbc3e8-3a1c-4b6f-9923-b49ff7d6691c = True
+
+	measure 'CO2 Latest Year' = ```
+			
+			VAR LatestYear = MAXX(ALL(dimyear), dimyear[year_key])
+			RETURN
+			    CALCULATE(
+			        [CO2 Tonnes],
+			        FILTER(ALL(dimyear), dimyear[year_key] = LatestYear)
+			    )
+			
+			```
+		lineageTag: b851067e-17f7-4f23-b8fa-003e737356f2
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Population Latest Year' = ```
+			
+			VAR LatestYear = [Latest Data Year]
+			RETURN
+			    CALCULATE(
+			        [Total Population],
+			        REMOVEFILTERS(dimyear),
+			        dimyear[year_key] = LatestYear
+			    )
+			
+			```
+		lineageTag: 8b0c9877-311f-46b5-a5c2-5a16a69f4f3d
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'CO2 per Person Latest Year' = ```
+			
+			VAR LatestYear = MAXX(ALL(dimyear), dimyear[year_key])
+			VAR LatestCO2 =
+			    CALCULATE(
+			        [CO2 Tonnes],
+			        FILTER(ALL(dimyear), dimyear[year_key] = LatestYear)
+			    )
+			VAR LatestPopulation =
+			    CALCULATE(
+			        [Total Population],
+			        FILTER(ALL(dimyear), dimyear[year_key] = LatestYear)
+			    )
+			RETURN
+			    DIVIDE(LatestCO2, LatestPopulation)
+			
+			```
+		lineageTag: 8dc44886-7f79-4d09-845b-d95b61171661
+
+		changedProperty = Name
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column country_code
+		dataType: string
+		lineageTag: 4493e918-5cdb-4519-9889-360effde0a07
+		sourceLineageTag: country_code
+		summarizeBy: none
+		sourceColumn: country_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column year_key
+		dataType: int64
+		formatString: 0
+		lineageTag: a53d9c0e-ae8b-4c53-ba78-1360cec75bc1
+		sourceLineageTag: year_key
+		summarizeBy: none
+		sourceColumn: year_key
+
+		annotation SummarizationSetBy = Automatic
+
+	column co2_tonnes
+		dataType: double
+		lineageTag: c485fec6-5e68-4168-9312-e595823e7359
+		sourceLineageTag: co2_tonnes
+		summarizeBy: sum
+		sourceColumn: co2_tonnes
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gdp_current_usd
+		dataType: double
+		lineageTag: afeb0654-de55-4b5b-a12c-bac0a068efe1
+		sourceLineageTag: gdp_current_usd
+		summarizeBy: sum
+		sourceColumn: gdp_current_usd
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column population
+		dataType: double
+		lineageTag: a57070b4-af11-4fd7-b8bd-02e959b6d416
+		sourceLineageTag: population
+		summarizeBy: sum
+		sourceColumn: population
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column co2_tonnes_per_capita
+		dataType: double
+		lineageTag: 3ef27ec0-0c35-4289-b6f2-c0eb32586d69
+		sourceLineageTag: co2_tonnes_per_capita
+		summarizeBy: sum
+		sourceColumn: co2_tonnes_per_capita
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column co2_tonnes_per_1000_usd_gdp
+		dataType: double
+		lineageTag: d75c0145-3f78-4a2e-98dc-b122b16ce7fa
+		sourceLineageTag: co2_tonnes_per_1000_usd_gdp
+		summarizeBy: sum
+		sourceColumn: co2_tonnes_per_1000_usd_gdp
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition factcountryyear = entity
+		mode: directLake
+		source
+			entityName: factcountryyear
+			schemaName: dbo
+			expressionSource: 'DirectLake - LH_SIC_CO2_Analytics'
+

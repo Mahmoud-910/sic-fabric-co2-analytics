@@ -1,0 +1,7 @@
+role RLS_NorthAmerica
+	modelPermission: read
+
+	tablePermission dimcountry = [region] == """North America"""
+
+	annotation PBI_Id = 0ee1c3955d8f47e3b7f4a756afbcdfcc
+

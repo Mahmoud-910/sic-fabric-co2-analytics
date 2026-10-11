@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "DataPipeline",
+    "displayName": "Pipeline_1PL_SIC_CO2_Refresh"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "6f4e919e-0e0c-bd93-4af4-d4d9d20d0e62"
+  }
+}
